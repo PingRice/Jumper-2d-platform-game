@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfjvnnvjbg27l"
-path="res://.godot/imported/tileset no bg.png-63d76549cae896c95e6806389c86dd5f.ctex"
+uid="uid://fk2fpbvqntld"
+path="res://.godot/imported/Orange Background.png-e5aef4cb310cd6bfcf7176429dd1acdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sunnyland/World/tileset no bg.png"
-dest_files=["res://.godot/imported/tileset no bg.png-63d76549cae896c95e6806389c86dd5f.ctex"]
+source_file="res://Art/Orange Background.png"
+dest_files=["res://.godot/imported/Orange Background.png-e5aef4cb310cd6bfcf7176429dd1acdb.ctex"]
 
 [params]
 
