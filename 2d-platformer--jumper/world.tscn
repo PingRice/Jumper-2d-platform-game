@@ -809,7 +809,7 @@ sources/0 = SubResource("TileSetAtlasSource_fs3yr")
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
 z_index = 10
-position = Vector2(-120, -5057)
+position = Vector2(-656, -4297)
 
 [node name="MyLayers" type="Node2D" parent="."]
 
@@ -836,251 +836,280 @@ position = Vector2(-3, 0)
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_erkhp")
 
-[node name="Pine" type="Sprite2D" parent="MyLayers"]
+[node name="Props" type="Node2D" parent="MyLayers"]
+
+[node name="Pine" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(669, -3170)
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine2" type="Sprite2D" parent="MyLayers"]
+[node name="Pine2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(473, -3171)
 texture = ExtResource("5_3ve4t")
 
-[node name="Rock-1" type="Sprite2D" parent="MyLayers"]
+[node name="Rock-1" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(15, -118)
 texture = ExtResource("5_sk3je")
 
-[node name="Crate" type="Sprite2D" parent="MyLayers"]
+[node name="Crate" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-130, -1225)
 texture = ExtResource("7_iyaqu")
 
-[node name="Crate2" type="Sprite2D" parent="MyLayers"]
+[node name="Crate2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-114, -1225)
 texture = ExtResource("7_iyaqu")
 
-[node name="Crate3" type="Sprite2D" parent="MyLayers"]
+[node name="Crate3" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-122, -1241)
 texture = ExtResource("7_iyaqu")
 
-[node name="Big-crate" type="Sprite2D" parent="MyLayers"]
+[node name="Big-crate" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(170, -1233)
 texture = ExtResource("8_6iph5")
 
-[node name="Crank-up" type="Sprite2D" parent="MyLayers"]
+[node name="Crank-up" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-285, -1096)
 texture = ExtResource("8_y73bx")
 
-[node name="Tree" type="Sprite2D" parent="MyLayers"]
+[node name="Tree" type="Sprite2D" parent="MyLayers/Props"]
 z_index = 1
 position = Vector2(-836, -5489)
 texture = ExtResource("9_0rhxd")
 
-[node name="Pine" type="Sprite2D" parent="."]
+[node name="Pine3" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(870, -3166)
 texture = ExtResource("5_3ve4t")
 
-[node name="House" type="Sprite2D" parent="."]
+[node name="House" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(959, -3160)
 texture = ExtResource("6_sboso")
 
-[node name="Pine2" type="Sprite2D" parent="."]
+[node name="Pine4" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(1049, -3168)
 texture = ExtResource("5_3ve4t")
 
-[node name="BlueBackground" type="Sprite2D" parent="."]
+[node name="BlueBackground" type="Sprite2D" parent="MyLayers/Props"]
 modulate = Color(0.917948, 0.72955, 0.826802, 1)
 z_index = -2
 position = Vector2(147, -4422.5)
 scale = Vector2(4.41016, 5.24414)
 texture = ExtResource("7_014po")
 
-[node name="Pine3" type="Sprite2D" parent="."]
+[node name="Pine5" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(1037, -3171)
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine4" type="Sprite2D" parent="."]
+[node name="Pine6" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(877, -3171)
 texture = ExtResource("5_3ve4t")
 
-[node name="House2" type="Sprite2D" parent="."]
+[node name="House2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(963, -3160)
 texture = ExtResource("6_sboso")
 
-[node name="Pine5" type="Sprite2D" parent="."]
+[node name="Pine7" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(681, -3170)
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine6" type="Sprite2D" parent="."]
+[node name="Pine8" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(476, -3171)
 texture = ExtResource("5_3ve4t")
 
-[node name="Crate" type="Sprite2D" parent="."]
+[node name="Crate4" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-223, -4873)
 texture = ExtResource("7_iyaqu")
 
-[node name="Crate2" type="Sprite2D" parent="."]
+[node name="Crate5" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-207, -4873)
 texture = ExtResource("7_iyaqu")
 
-[node name="Crate3" type="Sprite2D" parent="."]
+[node name="Crate6" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-214, -4889)
 texture = ExtResource("7_iyaqu")
 
-[node name="Big-crate" type="Sprite2D" parent="."]
+[node name="Big-crate2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(79, -4976)
 texture = ExtResource("8_6iph5")
 
-[node name="Bush" type="Sprite2D" parent="."]
+[node name="Bush" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(616, -3118)
 texture = ExtResource("9_x7eop")
 
-[node name="Bush2" type="Sprite2D" parent="."]
+[node name="Bush2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(786, -3120)
 texture = ExtResource("9_x7eop")
 
-[node name="Pine7" type="Sprite2D" parent="."]
+[node name="Pine9" type="Sprite2D" parent="MyLayers/Props"]
 z_index = 1
 position = Vector2(-890, -3973)
 rotation = 1.58808
+scale = Vector2(1, 1)
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine7" type="Sprite2D" parent="Pine7"]
+[node name="Pine7" type="Sprite2D" parent="MyLayers/Props/Pine9"]
 z_index = 1
 position = Vector2(-32.7209, -41.4407)
 rotation = -0.043069
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine8" type="Sprite2D" parent="."]
+[node name="Pine10" type="Sprite2D" parent="MyLayers/Props"]
 z_index = 1
 position = Vector2(-997, -3972)
 rotation = -1.54857
 scale = Vector2(1, 1)
 texture = ExtResource("5_3ve4t")
 
-[node name="Pine7" type="Sprite2D" parent="Pine8"]
+[node name="Pine7" type="Sprite2D" parent="MyLayers/Props/Pine10"]
 z_index = 1
 position = Vector2(30.3257, -30.6813)
 rotation = 0.0300781
 texture = ExtResource("5_3ve4t")
 
-[node name="Sign" type="Sprite2D" parent="."]
+[node name="Sign" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-38, -4660)
 scale = Vector2(2, 2)
 texture = ExtResource("12_xeuav")
 
-[node name="Tree" type="Sprite2D" parent="."]
+[node name="Tree2" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-880, -5516)
 rotation = -0.643406
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree2" type="Sprite2D" parent="."]
+[node name="Tree3" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-906, -5450)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree3" type="Sprite2D" parent="."]
+[node name="Tree4" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-935, -5414)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree4" type="Sprite2D" parent="."]
+[node name="Tree5" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-1007, -5473)
 rotation = 0.567291
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree5" type="Sprite2D" parent="."]
+[node name="Tree6" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -1
 position = Vector2(-953, -5505)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree6" type="Sprite2D" parent="."]
+[node name="Tree7" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-1069, -5481)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree7" type="Sprite2D" parent="."]
+[node name="Tree8" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-1000, -5434)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree8" type="Sprite2D" parent="."]
+[node name="Tree9" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -1
 position = Vector2(-1027, -5526)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree9" type="Sprite2D" parent="."]
+[node name="Tree10" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -1
 position = Vector2(-918, -5555)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree10" type="Sprite2D" parent="."]
+[node name="Tree11" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -2
 position = Vector2(-989, -5574)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree11" type="Sprite2D" parent="."]
+[node name="Tree12" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-774, -5464)
 rotation = 1.44708
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree12" type="Sprite2D" parent="."]
+[node name="Tree13" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-796, -5432)
 rotation = 1.70084
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree13" type="Sprite2D" parent="."]
+[node name="Tree14" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-830, -5385)
 rotation = 2.02835
+scale = Vector2(1, 1)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree14" type="Sprite2D" parent="."]
+[node name="Tree15" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-1097, -5439)
 rotation = -1.66859
+scale = Vector2(1, 1)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree15" type="Sprite2D" parent="."]
+[node name="Tree16" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-1051, -5379)
 rotation = -2.24684
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree16" type="Sprite2D" parent="."]
+[node name="Tree17" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-818, -5543)
 rotation = 0.505637
+scale = Vector2(1, 1)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree17" type="Sprite2D" parent="."]
+[node name="Tree18" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -2
 position = Vector2(-862, -5592)
 rotation = 0.343211
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree18" type="Sprite2D" parent="."]
+[node name="Tree19" type="Sprite2D" parent="MyLayers/Props"]
 z_index = -2
 position = Vector2(-932, -5619)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree19" type="Sprite2D" parent="."]
+[node name="Tree20" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-814, -4840)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree20" type="Sprite2D" parent="."]
+[node name="Tree21" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-754, -4812)
 rotation = 1.50081
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree21" type="Sprite2D" parent="."]
+[node name="Tree22" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-860, -4814)
 rotation = 1.54759
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree22" type="Sprite2D" parent="."]
+[node name="Tree23" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-873, -4807)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree23" type="Sprite2D" parent="."]
+[node name="Tree24" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-797, -4776)
 rotation = 1.1456
+scale = Vector2(1, 1)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree24" type="Sprite2D" parent="."]
+[node name="Tree25" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-866, -4748)
 texture = ExtResource("9_0rhxd")
 
-[node name="Tree25" type="Sprite2D" parent="."]
+[node name="Tree26" type="Sprite2D" parent="MyLayers/Props"]
 position = Vector2(-876, -4715)
 rotation = 2.1368
+texture = ExtResource("9_0rhxd")
+
+[node name="Tree27" type="Sprite2D" parent="MyLayers/Props"]
+z_index = 5
+position = Vector2(-997, -5387)
+texture = ExtResource("9_0rhxd")
+
+[node name="Tree28" type="Sprite2D" parent="MyLayers/Props"]
+z_index = 5
+position = Vector2(-886, -5400)
+texture = ExtResource("9_0rhxd")
+
+[node name="Tree29" type="Sprite2D" parent="MyLayers/Props"]
+z_index = 4
+position = Vector2(-1060, -5426)
+rotation = -0.886984
+texture = ExtResource("9_0rhxd")
+
+[node name="Tree30" type="Sprite2D" parent="MyLayers/Props"]
+z_index = 4
+position = Vector2(-836, -5442)
+rotation = 0.801195
 texture = ExtResource("9_0rhxd")
