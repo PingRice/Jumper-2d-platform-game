@@ -5,12 +5,13 @@ public partial class Player : CharacterBody2D
 {
 	// Basic Movement Values
 	public const float Speed = 250.0f;
-	public const float fallSpeed = 175f;
+	public const float fallSpeed = 175;
 	public const float JumpVelocity = -500.0f;
 	public const float des_rate = Speed*0.2f;
 	// Timers
 	public double jumpTimer = 0.0d;
 	public double coyoteTimer = 0.0d;
+	public double fallTimer = 0.0d;
 	// Bool's
 	public bool jumpAvailable = true;
 	public bool isFalling = false;
@@ -38,7 +39,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 		}
@@ -50,7 +51,7 @@ public partial class Player : CharacterBody2D
 		}
 		
 		// Handle Coyote Jump
-		if (Input.IsActionJustPressed("ui_accept")) 	
+		if (Input.IsActionJustPressed("Jump")) 	
 		{
 			if (coyoteTimer >= 0d) 
 			{
@@ -60,9 +61,10 @@ public partial class Player : CharacterBody2D
 			jumpTimer = 0.1d;
 		}
 		
-		//Handle Coyote and Jump Buffering Timers
+		//Handle Coyote, Jump Buffering and fallTimer for speed Timers
 		jumpTimer -= delta;
 		coyoteTimer -= delta;
+		fallTimer -= delta;
 		
 		//Execute Jump Buffering
 		if (jumpTimer > 0d && IsOnFloor()) 
@@ -73,7 +75,11 @@ public partial class Player : CharacterBody2D
 		//Handle Slowmove while Falling
 		if (velocity.Y > 0)
 		{
-			isFalling = true;
+			fallTimer = 0.1d;
+			if (fallTimer >=0d)
+			{
+				isFalling = true;
+			}
 		}
 		else
 		{
@@ -83,7 +89,7 @@ public partial class Player : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		
 		// Handle Movement
 		if (direction != Vector2.Zero)

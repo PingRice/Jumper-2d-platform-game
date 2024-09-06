@@ -111,7 +111,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olvkj"]
-radius = 19.0263
+radius = 13.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(115, 42)
@@ -125,7 +125,7 @@ animation = &"Walk"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-28, 133)
+position = Vector2(-30, 138)
 shape = SubResource("CircleShape2D_olvkj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
