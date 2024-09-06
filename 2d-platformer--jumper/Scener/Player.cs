@@ -11,7 +11,7 @@ public partial class Player : CharacterBody2D
 	// Timers
 	public double jumpTimer = 0.0d;
 	public double coyoteTimer = 0.0d;
-	public double fallTimer = 0.0d;
+
 	// Bool's
 	public bool jumpAvailable = true;
 	public bool isFalling = false;
@@ -61,10 +61,9 @@ public partial class Player : CharacterBody2D
 			jumpTimer = 0.1d;
 		}
 		
-		//Handle Coyote, Jump Buffering and fallTimer for speed Timers
+		//Handle Coyote, Jump Buffering Timers
 		jumpTimer -= delta;
 		coyoteTimer -= delta;
-		fallTimer -= delta;
 		
 		//Execute Jump Buffering
 		if (jumpTimer > 0d && IsOnFloor()) 
@@ -73,13 +72,9 @@ public partial class Player : CharacterBody2D
 		}
 		
 		//Handle Slowmove while Falling
-		if (velocity.Y > 0)
+		if (velocity.Y > 100)
 		{
-			fallTimer = 0.1d;
-			if (fallTimer >=0d)
-			{
 				isFalling = true;
-			}
 		}
 		else
 		{
