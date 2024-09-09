@@ -15,16 +15,17 @@ public partial class Player : CharacterBody2D
 	// Bool's
 	public bool jumpAvailable = true;
 	public bool isFalling = false;
-	
+	private bool isJumping = false;
 	// Define Character
 	CharacterBody2D player;
 	AnimatedSprite2D aniSprite;
-
+	AudioStreamPlayer AudioJump;
 	// Startup
 	public override void _Ready()
 	{
 		GD.Print("Player is Ready!");
 		aniSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		AudioJump = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
 	// Main Physics
@@ -44,9 +45,8 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
-
 		}
-		
+
 		// Start Coyote Timer
 		if (IsOnFloor()) 
 		{
@@ -84,6 +84,22 @@ public partial class Player : CharacterBody2D
 			isFalling = false;
 		}
 
+// Handle Jump SFX
+{
+	if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+	{
+		isJumping = true;
+		AudioJump.Play();
+	}
+	else if (!IsOnFloor()) // Check if no longer on floor (i.e. jumping)
+	{
+	//  Handle jump logic (if needed)
+	}
+	else // Reset isJumping when back on floor (after jump)
+	{
+	isJumping = false;
+	}
+}
 		
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.

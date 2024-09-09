@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://4gvu34fwga1l"]
+[gd_scene load_steps=19 format=3 uid="uid://4gvu34fwga1l"]
 
 [ext_resource type="Script" path="res://Scener/Player.cs" id="1_fqpi8"]
 [ext_resource type="Texture2D" uid="uid://ddmvvoikisvcy" path="res://Art/Sunnyland/Player/player.png" id="2_6jyty"]
+[ext_resource type="AudioStream" uid="uid://d030dt2cg5mgk" path="res://jump_06.wav" id="3_hbacx"]
+[ext_resource type="Script" path="res://AudioStreamPlayer.cs" id="4_sypwa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8kff"]
 atlas = ExtResource("2_6jyty")
@@ -132,3 +134,8 @@ shape = SubResource("CircleShape2D_olvkj")
 position = Vector2(-33, 135)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hbacx")
+volume_db = -10.0
+script = ExtResource("4_sypwa")
