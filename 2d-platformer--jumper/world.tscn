@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=42 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cceo5gkq0w2u1" path="res://Art/Blue BackgroundNoMoon.png" id="13_0edi3"]
 [ext_resource type="Texture2D" uid="uid://cboi3fknx5ase" path="res://Art/Sunnyland/World/Props/rock.png" id="15_1huf3"]
 [ext_resource type="Texture2D" uid="uid://bjrqnfacmrvtu" path="res://Art/Sunnyland/World/Props/door-opened.png" id="16_wnq0r"]
+[ext_resource type="Texture2D" uid="uid://ojmk4nkkenkn" path="res://Art/Cloud Platform.png" id="18_o4n6o"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_4at44"]
 tile_data = PackedInt32Array(65536, 720896, 1342177287, 131072, 589824, 1610612743, 196608, 589824, 1342177287, 262144, 589824, 7, 327680, 589824, 1610612743, 393216, 589824, 1342177287, 458752, 589824, 7, 1, 720896, 7, 65537, 720896, 1610612743, 131073, 589824, 1342177287, 196609, 589824, 7, 262145, 720896, 7, 327681, 589824, 1342177287, 393217, 589824, 7, 2, 720896, 1342177287, 65538, 720896, 805306375, 131074, 589824, 7, 196610, 720896, 805306375, 262146, 720896, 1342177287, 327682, 720896, 1610612743, 3, 720896, 7, 65539, 720896, 805306375, 131075, 589824, 1610612743, 196611, 589824, 1342177287, 262147, 589824, 7, 65540, 720896, 7, 131076, 589824, 1342177287, 196612, 589824, 7, 65541, 720896, 1610612743, 131077, 589824, 7)
@@ -1339,6 +1340,46 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_y6i8s")
 sources/1 = SubResource("TileSetAtlasSource_wtcxc")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yj8fy"]
+
+[sub_resource type="Animation" id="Animation_k0px0"]
+resource_name = "move"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_7815h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ici4u"]
+_data = {
+"RESET": SubResource("Animation_7815h"),
+"move": SubResource("Animation_k0px0")
+}
+
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
@@ -1647,3 +1688,22 @@ z_index = -1
 position = Vector2(-10, -6)
 scale = Vector2(2.04639, 2.0362)
 tile_set = SubResource("TileSet_4mdqd")
+
+[node name="Cloud Platform" type="AnimatableBody2D" parent="."]
+position = Vector2(684, -6028)
+physics_material_override = SubResource("PhysicsMaterial_yj8fy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cloud Platform"]
+libraries = {
+"": SubResource("AnimationLibrary_ici4u")
+}
+autoplay = "move"
+
+[node name="TextureRect" type="TextureRect" parent="Cloud Platform"]
+offset_right = 324.0
+offset_bottom = 91.0
+texture = ExtResource("18_o4n6o")
+expand_mode = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cloud Platform"]
+polygon = PackedVector2Array(37, 10, 285, 10, 289, 22, 278, 38, 260, 42, 255, 50, 245, 53, 234, 63, 220, 63, 210, 50, 214, 36, 199, 27, 190, 40, 197, 47, 191, 60, 181, 61, 177, 75, 159, 79, 137, 62, 127, 62, 128, 41, 116, 37, 104, 43, 98, 50, 87, 50, 77, 43, 68, 46, 63, 41, 60, 31, 45, 35, 34, 21)
