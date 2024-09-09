@@ -31,6 +31,8 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+		Vector2 platVel = new Vector2(0,0);
+
 
 		// Add the gravity.
 		if (!IsOnFloor())
@@ -42,6 +44,7 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+
 		}
 		
 		// Start Coyote Timer
@@ -61,17 +64,17 @@ public partial class Player : CharacterBody2D
 			jumpTimer = 0.1d;
 		}
 		
-		//Handle Coyote, Jump Buffering Timers
+		// Handle Coyote, Jump Buffering Timers
 		jumpTimer -= delta;
 		coyoteTimer -= delta;
 		
-		//Execute Jump Buffering
+		// Execute Jump Buffering
 		if (jumpTimer > 0d && IsOnFloor()) 
 		{
 			velocity.Y = JumpVelocity;
 		}
 		
-		//Handle Slowmove while Falling
+		// Handle Slowmove while Falling
 		if (velocity.Y > 100)
 		{
 				isFalling = true;
@@ -81,7 +84,7 @@ public partial class Player : CharacterBody2D
 			isFalling = false;
 		}
 
-
+		
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
@@ -93,7 +96,7 @@ public partial class Player : CharacterBody2D
 			{
 				velocity.X = direction.X * fallSpeed;
 			}
-			else
+			else 
 			{
 				velocity.X = direction.X * Speed;
 			}
@@ -143,7 +146,6 @@ public partial class Player : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
-		
-		
+		platVel = GetPlatformVelocity();
 	}
 }
