@@ -123,7 +123,7 @@ script = ExtResource("1_fqpi8")
 position = Vector2(-26, 122)
 scale = Vector2(2, 1.947)
 sprite_frames = SubResource("SpriteFrames_houej")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
