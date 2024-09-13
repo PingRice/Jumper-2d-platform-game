@@ -6,7 +6,7 @@ public partial class globalAudioPlayer : AudioStreamPlayer
 	public override void _Ready()
 	{
 		if (Input.IsActionJustPressed("Jump")) {
-			Stream = GD.Load<AudioStream>("res://jump_06.wav");
+			Stream = GD.Load<AudioStream>("res://JumpBoing.wav");
 			Play();
 		}
 	}
