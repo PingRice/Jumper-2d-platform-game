@@ -86,7 +86,7 @@ public partial class Player : CharacterBody2D
 
 // Handle Jump SFX
 {
-	if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+	if (Input.IsActionJustPressed("Jump") && (IsOnFloor() || coyoteTimer > 0f))
 	{
 		isJumping = true;
 		AudioJump.Play();
