@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="res://Art/Sound/default_bus_layout.tres"
 
+[autoload]
+
+MusicPlayer="*res://Scener/music_player.tscn"
+
 [dotnet]
 
 project/assembly_name="2D platformer- Jumper"

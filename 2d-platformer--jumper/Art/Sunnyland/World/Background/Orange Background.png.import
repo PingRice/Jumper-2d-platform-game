@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1752mrdx8feg"
-path="res://.godot/imported/Magic forest background.jpg-be0c087baa84a0c63bac5f3a411b75ca.ctex"
+uid="uid://fk2fpbvqntld"
+path="res://.godot/imported/Orange Background.png-091462bf9da7025513fc6c6380453560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Magic forest background.jpg"
-dest_files=["res://.godot/imported/Magic forest background.jpg-be0c087baa84a0c63bac5f3a411b75ca.ctex"]
+source_file="res://Art/Sunnyland/World/Background/Orange Background.png"
+dest_files=["res://.godot/imported/Orange Background.png-091462bf9da7025513fc6c6380453560.ctex"]
 
 [params]
 

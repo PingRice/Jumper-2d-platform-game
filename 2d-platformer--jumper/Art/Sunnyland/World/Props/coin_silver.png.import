@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cceo5gkq0w2u1"
-path="res://.godot/imported/Blue BackgroundNoMoon.png-6de7e4b856355277dbfca06a933a35b7.ctex"
+uid="uid://brl6bskgj1x7e"
+path="res://.godot/imported/coin_silver.png-94e13749c386d2e610f689e6a2a44e36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Blue BackgroundNoMoon.png"
-dest_files=["res://.godot/imported/Blue BackgroundNoMoon.png-6de7e4b856355277dbfca06a933a35b7.ctex"]
+source_file="res://Art/Sunnyland/World/Props/coin_silver.png"
+dest_files=["res://.godot/imported/coin_silver.png-94e13749c386d2e610f689e6a2a44e36.ctex"]
 
 [params]
 

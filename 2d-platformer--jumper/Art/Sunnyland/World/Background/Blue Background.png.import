@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csduhrjh4sns3"
-path="res://.godot/imported/Blue Background.png-14c2d830cd32e92993f19e01ffe21311.ctex"
+path="res://.godot/imported/Blue Background.png-6457c85a85da82f1e7ba45b319d72c06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Blue Background.png"
-dest_files=["res://.godot/imported/Blue Background.png-14c2d830cd32e92993f19e01ffe21311.ctex"]
+source_file="res://Art/Sunnyland/World/Background/Blue Background.png"
+dest_files=["res://.godot/imported/Blue Background.png-6457c85a85da82f1e7ba45b319d72c06.ctex"]
 
 [params]
 

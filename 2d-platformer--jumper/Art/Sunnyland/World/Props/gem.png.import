@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fk2fpbvqntld"
-path="res://.godot/imported/Orange Background.png-e5aef4cb310cd6bfcf7176429dd1acdb.ctex"
+uid="uid://by5vhr5lykohn"
+path="res://.godot/imported/gem.png-0e59fcbcdf0754f478772c5a49b8e2ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Orange Background.png"
-dest_files=["res://.godot/imported/Orange Background.png-e5aef4cb310cd6bfcf7176429dd1acdb.ctex"]
+source_file="res://Art/Sunnyland/World/Props/gem.png"
+dest_files=["res://.godot/imported/gem.png-0e59fcbcdf0754f478772c5a49b8e2ae.ctex"]
 
 [params]
 
