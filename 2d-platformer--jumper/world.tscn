@@ -1486,7 +1486,8 @@ position = Vector2(1990, -3171)
 texture = ExtResource("5_3ve4t")
 
 [node name="House2" type="Sprite2D" parent="Props"]
-position = Vector2(1595, -3159)
+position = Vector2(1574, -3215)
+scale = Vector2(1.75, 2)
 texture = ExtResource("6_sboso")
 
 [node name="Pine8" type="Sprite2D" parent="Props"]
@@ -1920,7 +1921,7 @@ autoplay = "PVMove2"
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
 z_index = 10
-position = Vector2(48, 92)
+position = Vector2(42, 80)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c47gk")
