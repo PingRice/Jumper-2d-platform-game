@@ -110,12 +110,20 @@ public partial class Player : CharacterBody2D
 		{
 			if (isFalling == true)
 			{
-				velocity.X = direction.X * fallSpeed;
+				if (velocity.Y >= 300) 
+				{
+					velocity.X = direction.X * 100;
+				}
+				else
+				{
+					velocity.X = direction.X * fallSpeed;
+				}
 			}
 			else 
 			{
 				velocity.X = direction.X * Speed;
 			}
+			
 		}
 		else
 		{

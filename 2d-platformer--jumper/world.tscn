@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=71 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://dhxhvornancvv" path="res://Art/Sunnyland/World/Props/shrooms.png" id="19_5n8by"]
 [ext_resource type="Texture2D" uid="uid://dy6o03xry2lgw" path="res://Art/Sunnyland/World/Props/Dark Lantern.png" id="19_wjkx2"]
 [ext_resource type="Texture2D" uid="uid://c2onmhir6ns38" path="res://Art/Sunnyland/World/Props/Lantern.png" id="20_wmaxr"]
+[ext_resource type="Script" path="res://Area2d2.cs" id="24_acm5y"]
+[ext_resource type="Script" path="res://Area2d.cs" id="24_ewlsb"]
+[ext_resource type="Script" path="res://Area2d3.cs" id="25_1o2hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjkv4"]
 texture = ExtResource("3_2nfaa")
@@ -1341,36 +1344,6 @@ background_mode = 3
 glow_enabled = true
 glow_hdr_threshold = 1.5
 
-[sub_resource type="Curve" id="Curve_e6jir"]
-_data = [Vector2(0.146667, 0.032967), 0.0, 0.0, 0, 0, Vector2(0.593333, 0.417582), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_oas3a"]
-curve = SubResource("Curve_e6jir")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3xfki"]
-lifetime_randomness = 0.19
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 21.13
-angle_min = -720.0
-angle_max = 360.0
-spread = 38.892
-initial_velocity_max = 91.4
-gravity = Vector3(-50, -50, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 100.0
-radial_accel_min = -2.23517e-06
-radial_accel_max = 100.0
-tangential_accel_min = -2.23517e-06
-tangential_accel_max = 100.0
-scale_max = 2.0
-scale_over_velocity_max = 505.38
-color = Color(0.133896, 0.878906, 0.826523, 1)
-alpha_curve = SubResource("CurveTexture_oas3a")
-sub_emitter_mode = 1
-sub_emitter_frequency = 100.0
-
 [sub_resource type="Gradient" id="Gradient_ac276"]
 offsets = PackedFloat32Array(0, 0.0194805, 0.0779221, 0.162338, 0.311688, 0.448052, 0.571429, 0.75974)
 colors = PackedColorArray(1, 1, 1, 1, 0.933193, 0.933193, 0.933193, 1, 0.667551, 0.667551, 0.667551, 1, 0.536783, 0.536783, 0.536783, 1, 0.395956, 0.395956, 0.395956, 1, 0.272925, 0.272925, 0.272925, 1, 0.145091, 0.145091, 0.145091, 1, 0, 0, 0, 1)
@@ -1379,6 +1352,73 @@ colors = PackedColorArray(1, 1, 1, 1, 0.933193, 0.933193, 0.933193, 1, 0.667551,
 gradient = SubResource("Gradient_ac276")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fajgc"]
+size = Vector2(82, 12.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rq1gl"]
+font_size = 36
+
+[sub_resource type="Animation" id="Animation_jvtsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2.07053),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jc3n7"]
+resource_name = "zoneChange"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, 80), Vector2(0, 80), Vector2(0, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7vpd"]
+_data = {
+"RESET": SubResource("Animation_jvtsn"),
+"zoneChange": SubResource("Animation_jc3n7")
+}
 
 [node name="World" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-5936.0]
@@ -1798,6 +1838,11 @@ position = Vector2(376, -1443)
 scale = Vector2(0.368, 0.298)
 texture = ExtResource("20_wmaxr")
 
+[node name="Lantern9" type="Sprite2D" parent="Props"]
+position = Vector2(56, -1201)
+scale = Vector2(0.368, 0.298)
+texture = ExtResource("20_wmaxr")
+
 [node name="Lantern2" type="Sprite2D" parent="Props"]
 position = Vector2(376, -1725)
 scale = Vector2(0.368, 0.298)
@@ -1805,6 +1850,12 @@ texture = ExtResource("20_wmaxr")
 
 [node name="Lantern7" type="Sprite2D" parent="Props"]
 position = Vector2(-348, -1443)
+scale = Vector2(0.368, 0.298)
+texture = ExtResource("20_wmaxr")
+flip_h = true
+
+[node name="Lantern10" type="Sprite2D" parent="Props"]
+position = Vector2(-28, -1201)
 scale = Vector2(0.368, 0.298)
 texture = ExtResource("20_wmaxr")
 flip_h = true
@@ -1919,20 +1970,8 @@ libraries = {
 }
 autoplay = "PVMove2"
 
-[node name="Player" parent="." instance=ExtResource("1_fgjsh")]
-z_index = 10
-position = Vector2(42, 80)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c47gk")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-modulate = Color(0.0485992, 0.93574, 0.957031, 1)
-position = Vector2(1360, -65)
-scale = Vector2(0.0475, 0.0475)
-amount = 40
-amount_ratio = 0.8667
-process_material = SubResource("ParticleProcessMaterial_3xfki")
 
 [node name="Enviroment Lights" type="Node2D" parent="."]
 
@@ -2001,6 +2040,76 @@ texture = SubResource("GradientTexture2D_3c4tp")
 
 [node name="PointLight2D11" type="PointLight2D" parent="Enviroment Lights"]
 position = Vector2(-211, -1048)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D46" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-344, -3016)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D47" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-276, -3086)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D48" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-210, -3153)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D49" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-143, -3219)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D50" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-81, -3283)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D51" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(110, -3281)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D52" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(174, -3219)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D53" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(238, -3153)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D54" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(301, -3085)
+scale = Vector2(2.36426, 4.53516)
+color = Color(0.292969, 0.625, 0.415565, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D55" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(368, -3024)
 scale = Vector2(2.36426, 4.53516)
 color = Color(0.292969, 0.625, 0.415565, 1)
 energy = 1.2
@@ -2096,3 +2205,264 @@ scale = Vector2(2.36426, 4.53516)
 color = Color(0.292969, 0.625, 0.415565, 1)
 energy = 1.2
 texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D20" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(365, -1440)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D25" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-341, -1720)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D26" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(359, -2908)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D27" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-325, -2902)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D28" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(351, -2558)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D29" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-333, -2564)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D30" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(367, -1721)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D31" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(199, -1645)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D32" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(200, -1487)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D33" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(206, -1365)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D34" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-175, -1356)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D35" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-177, -1522)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D36" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-176, -1679)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D37" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-60, -1905)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D38" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(83, -1906)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D39" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(81, -2064)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D40" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-56, -2066)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D41" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-61, -2225)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D42" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(81, -2227)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.886275, 0.658824, 0.368627, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D43" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-335, -1445)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 1.7
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D44" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(57, -1200)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="PointLight2D45" type="PointLight2D" parent="Enviroment Lights"]
+position = Vector2(-29, -1196)
+scale = Vector2(2.88525, 2.9707)
+color = Color(0.941176, 0.498039, 0.235294, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_3c4tp")
+
+[node name="Zone Change" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Zone Change"]
+position = Vector2(248, -3396)
+script = ExtResource("24_ewlsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Area2D"]
+position = Vector2(-234, 57)
+shape = SubResource("RectangleShape2D_fajgc")
+
+[node name="Area2D2" type="Area2D" parent="Zone Change"]
+position = Vector2(248, -3396)
+script = ExtResource("24_acm5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Area2D2"]
+position = Vector2(-203, -2985)
+shape = SubResource("RectangleShape2D_fajgc")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(248, -3396)
+script = ExtResource("25_1o2hi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(-237, 3443)
+shape = SubResource("RectangleShape2D_fajgc")
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(248, -3396)
+script = ExtResource("25_1o2hi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(-234, 70)
+shape = SubResource("RectangleShape2D_fajgc")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overworld" type="Label" parent="UI/Control"]
+modulate = Color(0.0488359, 0.637389, 0.040737, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "OVERWORLD"
+label_settings = SubResource("LabelSettings_rq1gl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Overworld"]
+libraries = {
+"": SubResource("AnimationLibrary_k7vpd")
+}
+
+[node name="Sky" type="Label" parent="UI/Control"]
+modulate = Color(1.92523e-07, 0.874933, 0.877837, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "SKY"
+label_settings = SubResource("LabelSettings_rq1gl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Sky"]
+libraries = {
+"": SubResource("AnimationLibrary_k7vpd")
+}
+
+[node name="Ruins" type="Label" parent="UI/Control"]
+modulate = Color(0.715445, 0.00159717, 0.868747, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "RUINS"
+label_settings = SubResource("LabelSettings_rq1gl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Ruins"]
+libraries = {
+"": SubResource("AnimationLibrary_k7vpd")
+}
+
+[node name="Player" parent="." instance=ExtResource("1_fgjsh")]
+z_index = 10
+position = Vector2(219, -2964)
+
+[connection signal="body_entered" from="Zone Change/Area2D" to="Zone Change/Area2D" method="OnEnter"]
+[connection signal="body_entered" from="Zone Change/Area2D2" to="Zone Change/Area2D2" method="_OnEnter"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_OnEnter"]
+[connection signal="body_entered" from="Area2D4" to="Area2D4" method="_OnEnter"]
