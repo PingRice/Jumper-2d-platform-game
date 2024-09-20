@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=88 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -23,11 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://dhxhvornancvv" path="res://Art/Sunnyland/World/Props/shrooms.png" id="19_5n8by"]
 [ext_resource type="Texture2D" uid="uid://dy6o03xry2lgw" path="res://Art/Sunnyland/World/Props/Dark Lantern.png" id="19_wjkx2"]
 [ext_resource type="Texture2D" uid="uid://c2onmhir6ns38" path="res://Art/Sunnyland/World/Props/Lantern.png" id="20_wmaxr"]
+[ext_resource type="Texture2D" uid="uid://du3qleyxuar7y" path="res://Art/Sunnyland/Player/baby fox.png" id="21_kmhql"]
 [ext_resource type="Script" path="res://Scripts/zoneRuins.cs" id="23_r2ebd"]
 [ext_resource type="Script" path="res://Scripts/OvRuins.cs" id="24_n51ad"]
 [ext_resource type="Script" path="res://Scripts/RuOverworld.cs" id="25_gxbep"]
 [ext_resource type="Script" path="res://Scripts/SkOverworld.cs" id="26_jk8e4"]
 [ext_resource type="Script" path="res://Scripts/OvSky.cs" id="27_5qis7"]
+[ext_resource type="Script" path="res://END.cs" id="29_c6hfp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjkv4"]
 texture = ExtResource("3_2nfaa")
@@ -1483,6 +1485,70 @@ _data = {
 "startAnim": SubResource("Animation_6jpwc")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_f5dgx"]
+font_size = 30
+
+[sub_resource type="Animation" id="Animation_ktxl2"]
+resource_name = "theEnd"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, -53), Vector2(0, 303), Vector2(0, 303), Vector2(4, -53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hl0jv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbobw"]
+_data = {
+"RESET": SubResource("Animation_hl0jv"),
+"theEnd": SubResource("Animation_ktxl2")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fajgc"]
 size = Vector2(82, 12.5)
 
@@ -1497,6 +1563,9 @@ size = Vector2(4373, 4.9375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x53og"]
 size = Vector2(4362, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ma5lc"]
+size = Vector2(43, 32.5001)
 
 [node name="World" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-5936.0]
@@ -1965,6 +2034,12 @@ position = Vector2(-348, -2903)
 scale = Vector2(0.368, 0.298)
 texture = ExtResource("20_wmaxr")
 flip_h = true
+
+[node name="Baby Fox" type="Sprite2D" parent="Props"]
+z_index = 5
+position = Vector2(-227.4, -8102.4)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("21_kmhql")
 
 [node name="Animations" type="Node2D" parent="."]
 
@@ -2490,7 +2565,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 50.0
+offset_bottom = 73.0
 grow_horizontal = 2
 text = "SKY"
 label_settings = SubResource("LabelSettings_rq1gl")
@@ -2522,6 +2597,29 @@ vertical_alignment = 1
 [node name="StartAnim" type="AnimationPlayer" parent="UI/Control/Start"]
 libraries = {
 "": SubResource("AnimationLibrary_tipml")
+}
+
+[node name="Slut" type="Label" parent="UI/Control"]
+modulate = Color(0.828899, 0.155938, 0.638111, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -377.0
+offset_right = 4.0
+offset_bottom = -335.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have saved your fox cub :)"
+label_settings = SubResource("LabelSettings_f5dgx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndAnim" type="AnimationPlayer" parent="UI/Control/Slut"]
+libraries = {
+"": SubResource("AnimationLibrary_xbobw")
 }
 
 [node name="Zone Change" type="Node2D" parent="."]
@@ -2562,12 +2660,21 @@ script = ExtResource("27_5qis7")
 position = Vector2(159, -6360)
 shape = SubResource("RectangleShape2D_x53og")
 
+[node name="Ending" type="Area2D" parent="Zone Change"]
+script = ExtResource("29_c6hfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Ending"]
+z_index = 4
+position = Vector2(-226, -8104.75)
+shape = SubResource("RectangleShape2D_ma5lc")
+
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
 z_index = 10
-position = Vector2(44, -122)
+position = Vector2(-285, -8699)
 
 [connection signal="body_entered" from="Zone Change/Ruins" to="Zone Change/Ruins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/OvRuins" to="Zone Change/OvRuins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/RuOverworld" to="Zone Change/RuOverworld" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/SkOverworld" to="Zone Change/SkOverworld" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/OvSky" to="Zone Change/OvSky" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/Ending" to="Zone Change/Ending" method="_OnEnter"]
