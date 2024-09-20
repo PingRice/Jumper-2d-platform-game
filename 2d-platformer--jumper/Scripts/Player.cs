@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
 	public const float fallSpeed = 175;
 	public const float JumpVelocity = -500.0f;
 	public const float des_rate = Speed*0.2f;
+	public float VelY;
 	// Timers
 	public double jumpTimer = 0.0d;
 	public double coyoteTimer = 0.0d;
@@ -33,6 +34,8 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 		Vector2 platVel = new Vector2(0,0);
+		VelY = velocity.Y;
+
 
 
 		// Add the gravity.

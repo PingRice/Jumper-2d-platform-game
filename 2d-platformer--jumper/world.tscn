@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=73 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -23,9 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dhxhvornancvv" path="res://Art/Sunnyland/World/Props/shrooms.png" id="19_5n8by"]
 [ext_resource type="Texture2D" uid="uid://dy6o03xry2lgw" path="res://Art/Sunnyland/World/Props/Dark Lantern.png" id="19_wjkx2"]
 [ext_resource type="Texture2D" uid="uid://c2onmhir6ns38" path="res://Art/Sunnyland/World/Props/Lantern.png" id="20_wmaxr"]
-[ext_resource type="Script" path="res://Area2d2.cs" id="24_acm5y"]
-[ext_resource type="Script" path="res://Area2d.cs" id="24_ewlsb"]
-[ext_resource type="Script" path="res://Area2d3.cs" id="25_1o2hi"]
+[ext_resource type="Script" path="res://Scripts/zoneRuins.cs" id="23_r2ebd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjkv4"]
 texture = ExtResource("3_2nfaa")
@@ -1353,9 +1351,6 @@ gradient = SubResource("Gradient_ac276")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fajgc"]
-size = Vector2(82, 12.5)
-
 [sub_resource type="LabelSettings" id="LabelSettings_rq1gl"]
 font_size = 36
 
@@ -1420,6 +1415,21 @@ _data = {
 "zoneChange": SubResource("Animation_jc3n7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fajgc"]
+size = Vector2(82, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xf4"]
+size = Vector2(123.25, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ioad"]
+size = Vector2(155, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf0g1"]
+size = Vector2(4373, 4.9375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x53og"]
+size = Vector2(4362, 6)
+
 [node name="World" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-5936.0]
 
@@ -1428,7 +1438,7 @@ position = Vector2(8, 3)
 
 [node name="BlueBackgroundNoMoon1" type="Sprite2D" parent="Backgrounds"]
 z_index = -5
-position = Vector2(150, -6618.37)
+position = Vector2(147, -6612)
 scale = Vector2(4.42578, 3.8423)
 texture = ExtResource("13_0edi3")
 
@@ -2360,40 +2370,6 @@ color = Color(0.941176, 0.498039, 0.235294, 1)
 energy = 0.9
 texture = SubResource("GradientTexture2D_3c4tp")
 
-[node name="Zone Change" type="Node2D" parent="."]
-
-[node name="Area2D" type="Area2D" parent="Zone Change"]
-position = Vector2(248, -3396)
-script = ExtResource("24_ewlsb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Area2D"]
-position = Vector2(-234, 57)
-shape = SubResource("RectangleShape2D_fajgc")
-
-[node name="Area2D2" type="Area2D" parent="Zone Change"]
-position = Vector2(248, -3396)
-script = ExtResource("24_acm5y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Area2D2"]
-position = Vector2(-203, -2985)
-shape = SubResource("RectangleShape2D_fajgc")
-
-[node name="Area2D3" type="Area2D" parent="."]
-position = Vector2(248, -3396)
-script = ExtResource("25_1o2hi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(-237, 3443)
-shape = SubResource("RectangleShape2D_fajgc")
-
-[node name="Area2D4" type="Area2D" parent="."]
-position = Vector2(248, -3396)
-script = ExtResource("25_1o2hi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(-234, 70)
-shape = SubResource("RectangleShape2D_fajgc")
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
@@ -2403,6 +2379,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Ruins" type="Label" parent="UI/Control"]
+modulate = Color(0.715445, 0.00159717, 0.868747, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "RUINS"
+label_settings = SubResource("LabelSettings_rq1gl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Ruins"]
+libraries = {
+"": SubResource("AnimationLibrary_k7vpd")
+}
 
 [node name="Overworld" type="Label" parent="UI/Control"]
 modulate = Color(0.0488359, 0.637389, 0.040737, 1)
@@ -2440,29 +2434,44 @@ libraries = {
 "": SubResource("AnimationLibrary_k7vpd")
 }
 
-[node name="Ruins" type="Label" parent="UI/Control"]
-modulate = Color(0.715445, 0.00159717, 0.868747, 1)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 50.0
-grow_horizontal = 2
-text = "RUINS"
-label_settings = SubResource("LabelSettings_rq1gl")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Zone Change" type="Node2D" parent="."]
 
-[node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Ruins"]
-libraries = {
-"": SubResource("AnimationLibrary_k7vpd")
-}
+[node name="Ruins" type="Area2D" parent="Zone Change"]
+position = Vector2(248, -3396)
+script = ExtResource("23_r2ebd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/Ruins"]
+position = Vector2(-237, 3443)
+shape = SubResource("RectangleShape2D_fajgc")
+
+[node name="OvRuins" type="Area2D" parent="Zone Change"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/OvRuins"]
+position = Vector2(14, -3346)
+shape = SubResource("RectangleShape2D_82xf4")
+
+[node name="RuOverworld" type="Area2D" parent="Zone Change"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/RuOverworld"]
+position = Vector2(14, -3354)
+shape = SubResource("RectangleShape2D_0ioad")
+
+[node name="SkOverworld" type="Area2D" parent="Zone Change"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/SkOverworld"]
+position = Vector2(164, -6349)
+shape = SubResource("RectangleShape2D_yf0g1")
+
+[node name="OvSky" type="Area2D" parent="Zone Change"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/OvSky"]
+position = Vector2(159, -6360)
+shape = SubResource("RectangleShape2D_x53og")
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
 z_index = 10
-position = Vector2(219, -2964)
+position = Vector2(23, -6558)
 
-[connection signal="body_entered" from="Zone Change/Area2D" to="Zone Change/Area2D" method="OnEnter"]
-[connection signal="body_entered" from="Zone Change/Area2D2" to="Zone Change/Area2D2" method="_OnEnter"]
-[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_OnEnter"]
-[connection signal="body_entered" from="Area2D4" to="Area2D4" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/Ruins" to="Zone Change/Ruins" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/OvRuins" to="Zone Change/OvRuins" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/RuOverworld" to="Zone Change/RuOverworld" method="_OnEnter"]
