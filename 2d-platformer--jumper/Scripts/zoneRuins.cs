@@ -4,12 +4,12 @@ using System;
 public partial class zoneRuins : Area2D
 {
 	AnimationPlayer anim;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		anim = GetNode<AnimationPlayer>("/root/World/UI/Control/Ruins/ZoneAnim");
-		GD.Print(anim);
+		anim = GetNode<AnimationPlayer>("/root/World/UI/Control/Start/StartAnim");
+		GD.Print("start" + anim);
 	}
 	
 	public void _OnEnter(Node2D body) 
@@ -17,8 +17,9 @@ public partial class zoneRuins : Area2D
 		if (body.Name == "Player")
 		{
 			GD.Print("x");
-			GD.Print(anim.Name);
-			anim.Play("zoneChange");
+				GD.Print("x");
+				GD.Print(anim.Name);
+				anim.Play("startAnim");
 		}
 	}
 }

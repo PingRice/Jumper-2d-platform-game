@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=81 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -1419,6 +1419,70 @@ _data = {
 "zoneChange": SubResource("Animation_jc3n7")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_se85s"]
+font_size = 23
+
+[sub_resource type="Animation" id="Animation_6jpwc"]
+resource_name = "startAnim"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -68), Vector2(0, 299.5), Vector2(0, 299.5), Vector2(-1, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tnadt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -67)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipml"]
+_data = {
+"RESET": SubResource("Animation_tnadt"),
+"startAnim": SubResource("Animation_6jpwc")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fajgc"]
 size = Vector2(82, 12.5)
 
@@ -2403,7 +2467,7 @@ libraries = {
 }
 
 [node name="Overworld" type="Label" parent="UI/Control"]
-modulate = Color(0.0488359, 0.637389, 0.040737, 1)
+modulate = Color(0.0621038, 0.836372, 0.05314, 1)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -2421,7 +2485,7 @@ libraries = {
 }
 
 [node name="Sky" type="Label" parent="UI/Control"]
-modulate = Color(1.92523e-07, 0.874933, 0.877837, 1)
+modulate = Color(0, 0.586667, 0.88, 1)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -2436,6 +2500,28 @@ vertical_alignment = 1
 [node name="ZoneAnim" type="AnimationPlayer" parent="UI/Control/Sky"]
 libraries = {
 "": SubResource("AnimationLibrary_k7vpd")
+}
+
+[node name="Start" type="Label" parent="UI/Control"]
+modulate = Color(21.081, 22.162, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = -67.0
+offset_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "Your fox child is stuck at the castle in the sky, 
+climb up and save your child!"
+label_settings = SubResource("LabelSettings_se85s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartAnim" type="AnimationPlayer" parent="UI/Control/Start"]
+libraries = {
+"": SubResource("AnimationLibrary_tipml")
 }
 
 [node name="Zone Change" type="Node2D" parent="."]
@@ -2478,7 +2564,7 @@ shape = SubResource("RectangleShape2D_x53og")
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
 z_index = 10
-position = Vector2(23, -6558)
+position = Vector2(44, -122)
 
 [connection signal="body_entered" from="Zone Change/Ruins" to="Zone Change/Ruins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/OvRuins" to="Zone Change/OvRuins" method="_OnEnter"]
