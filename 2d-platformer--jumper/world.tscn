@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://dmjdsnpesemgr"]
+[gd_scene load_steps=77 format=4 uid="uid://dmjdsnpesemgr"]
 
 [ext_resource type="PackedScene" uid="uid://4gvu34fwga1l" path="res://Scener/player.tscn" id="1_fgjsh"]
 [ext_resource type="Texture2D" uid="uid://drphl0u0pjf1y" path="res://Art/Sunnyland/World/Props/tileset.png" id="3_2nfaa"]
@@ -24,6 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://dy6o03xry2lgw" path="res://Art/Sunnyland/World/Props/Dark Lantern.png" id="19_wjkx2"]
 [ext_resource type="Texture2D" uid="uid://c2onmhir6ns38" path="res://Art/Sunnyland/World/Props/Lantern.png" id="20_wmaxr"]
 [ext_resource type="Script" path="res://Scripts/zoneRuins.cs" id="23_r2ebd"]
+[ext_resource type="Script" path="res://Scripts/OvRuins.cs" id="24_n51ad"]
+[ext_resource type="Script" path="res://Scripts/RuOverworld.cs" id="25_gxbep"]
+[ext_resource type="Script" path="res://Scripts/SkOverworld.cs" id="26_jk8e4"]
+[ext_resource type="Script" path="res://Scripts/OvSky.cs" id="27_5qis7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjkv4"]
 texture = ExtResource("3_2nfaa")
@@ -2386,7 +2390,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 50.0
+offset_bottom = 73.0
 grow_horizontal = 2
 text = "RUINS"
 label_settings = SubResource("LabelSettings_rq1gl")
@@ -2404,7 +2408,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 50.0
+offset_bottom = 73.0
 grow_horizontal = 2
 text = "OVERWORLD"
 label_settings = SubResource("LabelSettings_rq1gl")
@@ -2445,24 +2449,28 @@ position = Vector2(-237, 3443)
 shape = SubResource("RectangleShape2D_fajgc")
 
 [node name="OvRuins" type="Area2D" parent="Zone Change"]
+script = ExtResource("24_n51ad")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/OvRuins"]
 position = Vector2(14, -3346)
 shape = SubResource("RectangleShape2D_82xf4")
 
 [node name="RuOverworld" type="Area2D" parent="Zone Change"]
+script = ExtResource("25_gxbep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/RuOverworld"]
 position = Vector2(14, -3354)
 shape = SubResource("RectangleShape2D_0ioad")
 
 [node name="SkOverworld" type="Area2D" parent="Zone Change"]
+script = ExtResource("26_jk8e4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/SkOverworld"]
 position = Vector2(164, -6349)
 shape = SubResource("RectangleShape2D_yf0g1")
 
 [node name="OvSky" type="Area2D" parent="Zone Change"]
+script = ExtResource("27_5qis7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone Change/OvSky"]
 position = Vector2(159, -6360)
@@ -2475,3 +2483,5 @@ position = Vector2(23, -6558)
 [connection signal="body_entered" from="Zone Change/Ruins" to="Zone Change/Ruins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/OvRuins" to="Zone Change/OvRuins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/RuOverworld" to="Zone Change/RuOverworld" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/SkOverworld" to="Zone Change/SkOverworld" method="_OnEnter"]
+[connection signal="body_entered" from="Zone Change/OvSky" to="Zone Change/OvSky" method="_OnEnter"]
