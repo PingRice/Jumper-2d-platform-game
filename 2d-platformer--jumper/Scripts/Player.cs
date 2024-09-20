@@ -8,7 +8,8 @@ public partial class Player : CharacterBody2D
 	public const float fallSpeed = 175;
 	public const float JumpVelocity = -500.0f;
 	public const float des_rate = Speed*0.2f;
-	public float VelY;
+	public const float noclipSpeed = 200f;
+	
 	// Timers
 	public double jumpTimer = 0.0d;
 	public double coyoteTimer = 0.0d;
@@ -17,6 +18,8 @@ public partial class Player : CharacterBody2D
 	public bool jumpAvailable = true;
 	public bool isFalling = false;
 	private bool isJumping = false;
+	public bool devMode = false;
+	
 	// Define Character
 	CharacterBody2D player;
 	AnimatedSprite2D aniSprite;
@@ -34,20 +37,52 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 		Vector2 platVel = new Vector2(0,0);
-		VelY = velocity.Y;
 
-
+		if (Input.IsActionJustPressed("Noclip"))
+		{
+			if (devMode == false)
+			{
+				GD.Print("true");
+				GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+				devMode = true;
+			}
+			else
+			{
+				GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+				GD.Print("false");
+				devMode = false;
+			}
+		}
 
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
-			velocity += GetGravity() * (float)delta;
+			if (devMode == false) 
+			{
+				velocity += GetGravity() * (float)delta;
+			}
+			else
+			{
+				velocity.Y +=  3 * (float)delta;
+			}
 		}
 
+		
+		
 		// Handle Jump.
-		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("Jump"))
 		{
-			velocity.Y = JumpVelocity;
+			if (devMode == false)
+			{
+				if (IsOnFloor())
+				{
+					velocity.Y = JumpVelocity;
+				}
+			}
+			else
+			{
+				velocity.Y -= noclipSpeed;
+			}
 		}
 
 		// Start Coyote Timer
@@ -107,23 +142,40 @@ public partial class Player : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
-		
+		if (Input.IsActionJustPressed("Down"))
+		{
+			velocity.Y += noclipSpeed;
+		}
 		// Handle Movement
 		if (direction != Vector2.Zero)
 		{
-			if (isFalling == true)
+			if (devMode == true)
 			{
-				velocity.X = direction.X * fallSpeed;
+				velocity.X = direction.X * noclipSpeed;
 			}
-			else 
+			else
 			{
-				velocity.X = direction.X * Speed;
+				if (isFalling == true)
+				{
+					velocity.X = direction.X * fallSpeed;
+				}
+				else 
+				{
+					velocity.X = direction.X * Speed;
+				}
 			}
+			
 		}
 		else
 		{
-			
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, des_rate);
+			if (devMode == false)
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, des_rate);
+			}
+			else
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, 150);
+			}
 		}
 		
 		// Handle Animations
