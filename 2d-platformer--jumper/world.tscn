@@ -2617,6 +2617,7 @@ libraries = {
 }
 
 [node name="Zone Change" type="Node2D" parent="."]
+visible = false
 
 [node name="Ruins" type="Area2D" parent="Zone Change"]
 position = Vector2(248, -3396)
@@ -2663,8 +2664,9 @@ position = Vector2(-226, -8104.75)
 shape = SubResource("RectangleShape2D_ma5lc")
 
 [node name="Player" parent="." instance=ExtResource("1_fgjsh")]
+visible = false
 z_index = 10
-position = Vector2(405, -4775)
+position = Vector2(43, 102)
 
 [connection signal="body_entered" from="Zone Change/Ruins" to="Zone Change/Ruins" method="_OnEnter"]
 [connection signal="body_entered" from="Zone Change/OvRuins" to="Zone Change/OvRuins" method="_OnEnter"]

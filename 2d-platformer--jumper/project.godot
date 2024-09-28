@@ -32,6 +32,10 @@ window/size/mode=2
 
 project/assembly_name="2D platformer- Jumper"
 
+[editor]
+
+movie_writer/fps=144
+
 [input]
 
 ui_left={
